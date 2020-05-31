@@ -2,6 +2,12 @@ package net.egv.goratings.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Club {
@@ -9,6 +15,9 @@ public class Club {
     private String id;
     private String name;
 
+    @OneToMany
+    @JoinColumn(name = "club_id")
+    private List<Player> players = new ArrayList();
     public Club(String id, String name) {
         this.id = id;
         this.name = name;
